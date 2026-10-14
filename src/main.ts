@@ -110,8 +110,17 @@ heading.textContent = "D1 project";
 heading.style.whiteSpace = "pre-line";
 heading.style.marginLeft = "auto";
 heading.style.marginRight = "auto";
+heading.style.marginBottom = "0";
 
 app.append(heading);
+
+const statsDisplay = document.createElement("p");
+
+statsDisplay.style.fontSize = "18px";
+statsDisplay.style.textAlign = "center";
+statsDisplay.style.whiteSpace = "pre-line";
+
+app.append(statsDisplay);
 
 const progContainer = document.createElement("div");
 progContainer.style.width = "300px";
@@ -271,18 +280,12 @@ for(const entry of upgradeButtons){
 
 // app.append(message);
 
-const statsDisplay = document.createElement("p");
 
-statsDisplay.style.fontSize = "18px";
-statsDisplay.style.textAlign = "center";
-statsDisplay.style.whiteSpace = "pre-line";
-
-app.append(statsDisplay);
 
 function updateDisplay(){
   heading.textContent = `Drops Served: ${Math.floor(dropCount * 10) / 10} \n Glasses Served: ${Math.floor(dropCount / 100)}`;
 
-  statsDisplay.textContent = `Drops per click: ${currDps} \n Drops per second: ${currDropRate}`;
+  statsDisplay.textContent = `Drops per click: ${currDps} \n Drops per second: ${Math.floor(currDropRate * 10) / 10}`;
 
   progressBar.style.height = `${determineProgress(dropCount)}%`
 
@@ -297,6 +300,7 @@ image.addEventListener("click", () => {
 
   updateDisplay();
 })
+
 
 
 
